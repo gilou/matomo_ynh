@@ -34,6 +34,7 @@ then
 
 
 		chown -R $app:www-data "$install_dir"
+		ynh_script_progression --message "Resetting PHP opcache"
 		ynh_exec_as $app php${phpversion} -r "opcache_reset();"
 		ynh_exec_as $app php${phpversion} $install_dir/console core:update -n
 	fi
