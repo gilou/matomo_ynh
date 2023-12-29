@@ -34,7 +34,7 @@ then
 
 
 		chown -R $app:www-data "$install_dir"
-		read -p "Waiting before running core:update, investigate the #111 issue  "
+		ynh_exec_as $app php${phpversion} -r "opcache_reset();"
 		ynh_exec_as $app php${phpversion} $install_dir/console core:update -n
 	fi
 fi
